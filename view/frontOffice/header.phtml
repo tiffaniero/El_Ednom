@@ -1,0 +1,20 @@
+<script src="assets/js/app.js"></script>
+
+<div id="titleAccount">
+    <h1 class="dailyTitle">El Ednom</h1>
+    <a id="account" href="index.php?route=3">
+        <h4>Mon Compte</h4>
+        <span class="material-icons">
+            person
+        </span>
+    </a>
+</div>
+
+
+<div class="rectangle">
+    <span><?php
+    setlocale(LC_ALL, 'fr_FR.UTF-8');
+    echo strftime("Le %A %d %B %Y");
+    ?></span>
+    <span name="clock"></span>
+</div>

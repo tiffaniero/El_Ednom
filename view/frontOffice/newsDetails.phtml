@@ -1,0 +1,9 @@
+<section>
+    <div class="newsDetails">
+        <article>
+            <h3><?= htmlspecialchars($newsDetails['title']) ?></h3>
+            <p><?= htmlspecialchars($newsDetails['content']) ?></p>
+            <p class="publishDate">Publié le <?= htmlspecialchars($newsDetails['created_date']) ?> par <?= htmlspecialchars($newsDetails['id_users']) ?><p>
+        </article>
+    </div>
+</section>

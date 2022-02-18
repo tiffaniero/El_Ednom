@@ -1,0 +1,15 @@
+<div class="column">
+    <form action="index.php?route=10" method="POST">
+        <h2>Modifier l'article</h2>
+        <div class="row">
+            <label for="title">Titre</label>
+            <input type="text" id="title" name="title" value="<?= $newsToUpdate['title']?>" required autofocus >
+        </div>
+        <div class="row">
+            <label for="content">Contenu</label>
+            <textarea type="text" id="content" name="content"><?= $newsToUpdate['content']?></textarea>
+        </div>
+        <input type="hidden" name="id_news" value ="<?= $newsToUpdate['id_news']?>">
+        <button type="submit" class="button">Publier l'article</button>
+    </form>
+</div>

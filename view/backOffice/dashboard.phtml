@@ -1,0 +1,37 @@
+<section id = "newsList">
+    <h2>Vos articles</h2>
+    <div class="listView">
+        <?php foreach ($newsList as $item) :?>
+            <div class="container">
+                <article>
+                    <h2>#<?= $item['id_news'] ?></h2>
+                    <h3><a href="index.php?route=6&id=<?= htmlspecialchars($item['id_news'])?>"><?= htmlspecialchars($item['title']) ?></a></h3>
+                    <p><?= limiteChars(htmlspecialchars($item['content'])) ?></p>
+                    <p class="publishDate">Publié le <?= htmlspecialchars($item['created_date']) ?> par <?= htmlspecialchars($item['id_users']) ?><p>
+                </article>
+                <div class="editIcon">
+                    <a href="index.php?route=9&id=<?= htmlspecialchars($item['id_news'])?>"><span class="material-icons">edit</span></a>
+                    <a href="index.php?route=11&id=<?= htmlspecialchars($item['id_news'])?>"><span class="material-icons">delete</span></a>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</section>
+
+<div class="addButton">
+    <a href="index.php?route=7"><span class="material-icons">add_circle</span></a>
+</div>
+
+
+<?php function limiteChars($string,$max=300){
+ 
+    if (strlen($string) >= $max)
+    {
+        $string = substr($string, 0, $max);
+        $space = strrpos($string, " ");
+        $string = substr($string, 0, $space)." ...";
+    }
+    return $string;
+}
+
+?>

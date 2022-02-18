@@ -1,0 +1,28 @@
+<section id = "newsList">
+    <h2>Actualités du jour</h2>
+    <div class="listView">
+        <?php foreach ($newsList as $item) :?>
+            <div class="container">
+                <article>
+                    <h3><a href="index.php?route=2&id=<?= htmlspecialchars($item['id_news'])?>"><?= htmlspecialchars($item['title']) ?></a></h3>
+                    <p><?= limiteChars(htmlspecialchars($item['content'])) ?></p>
+                    <p class="publishDate">Publié le <?= htmlspecialchars($item['created_date']) ?> par <?= htmlspecialchars($item['id_users']) ?><p>
+                </article>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</section>
+
+
+<?php function limiteChars($string,$max=300){
+ 
+    if (strlen($string) >= $max)
+    {
+        $string = substr($string, 0, $max);
+        $space = strrpos($string, " ");
+        $string = substr($string, 0, $space)." ...";
+    }
+    return $string;
+}
+
+?>
