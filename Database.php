@@ -12,7 +12,7 @@ abstract class Database{
             $user       = DATABASE_USER;
             $password   = DATABASE_PASSWORD;
 
-            self::$pdo = new PDO('mysql:host='. $dbHost .';dbname='. $dbName.';charset=UTF8', $user, $password);
+            self::$pdo = new \PDO('mysql:host='. $dbHost .';dbname='. $dbName.';charset=UTF8', $user, $password);
             self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         return self::$pdo;

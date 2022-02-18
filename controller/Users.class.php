@@ -1,5 +1,7 @@
 <?php
 
+namespace controller;
+
 class Users{
 
     public function __contruct(){
@@ -27,7 +29,7 @@ class Users{
         
         if(isset($_POST['pseudo']) && isset($_POST['password'])){
 
-            $usersModel = new UsersModel();
+            $usersModel = new \model\UsersModel();
 
              //Est-ce que le user existe
             $user = $usersModel->getUserByPseudo($_POST['pseudo']);
@@ -55,7 +57,7 @@ class Users{
 
     public function getCurrentUser($id){
 
-        $usersModel = new UsersModel();
+        $usersModel = new \model\UsersModel();
         return $usersModel->getOneById($id);
 
     }

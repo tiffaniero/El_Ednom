@@ -1,5 +1,7 @@
 <?php
 
+namespace controller;
+
 class News{
 
     public function __contruct(){
@@ -8,7 +10,7 @@ class News{
 
     public function showHome(){
         
-        $newsModel = new NewsModel();
+        $newsModel = new \model\NewsModel();
         $newsList = $newsModel->getAll();
 
         $headerTemplate = "view/frontOffice/header.phtml";
@@ -17,7 +19,7 @@ class News{
     }
     
     public function showOneNews($id){
-        $newsModel = new NewsModel();
+        $newsModel = new \model\NewsModel();
         $newsDetails = $newsModel->getOneById($id);
 
         $headerTemplate = "view/frontOffice/header.phtml";
@@ -39,20 +41,20 @@ class News{
     //!\\ A déplacer !!
     public function getCurrentUser(){
 
-        $usersModel = new UsersModel();
+        $usersModel = new \model\UsersModel();
         return $usersModel->getOneById($_SESSION['id_user']);
 
     }
 
     public function getAllNewsFromCurrentUser(){
         
-        $newsModel = new NewsModel();
+        $newsModel = new \model\NewsModel();
         return $newsModel->getAllNewsFromUser($_SESSION['id_user']);
     }
 
     public function showOneNewsFromCurrentUser($id){
         session_start();
-        $newsModel = new NewsModel();
+        $newsModel = new \model\NewsModel();
         $newsDetails = $newsModel->getOneById($id);
 
         $user = $this->getCurrentUser();
@@ -83,7 +85,7 @@ class News{
         $data = array_values($post);
         array_push($data, $_SESSION['id_user']);
 
-        $newsModel = new NewsModel();
+        $newsModel = new \model\NewsModel();
         $newsModel->insert($data);
 
         header('Location: index.php?route=5');
@@ -95,7 +97,7 @@ class News{
 
         $user = $this->getCurrentUser();
 
-        $newsModel = new NewsModel();
+        $newsModel = new \model\NewsModel();
         $newsToUpdate = $newsModel->getOneById($id);
 
         if($_SESSION['id_user'] == $newsToUpdate['id_users']){
@@ -122,7 +124,7 @@ class News{
             $_POST['id_news']
         ];
 
-        $newsModel = new NewsModel();
+        $newsModel = new \model\NewsModel();
         $newsModel->update($data);
 
         header('Location: index.php?route=5');
@@ -132,7 +134,7 @@ class News{
     public function delete(){
         session_start();
 
-        $newsModel = new NewsModel();
+        $newsModel = new \model\NewsModel();
         $newsToDelete = $newsModel->getOneById(intval($_GET['id']));
 
         if($_SESSION['id_user'] == $newsToDelete['id_users']){

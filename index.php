@@ -33,23 +33,23 @@ switch($route){
             include('view/error404.phtml');
             die();
         } else {
-            $news = new News();
+            $news = new \controller\News();
             $news->showOneNews(intval($_GET['id']));
         }
         break;
     
     case 3 :
-        $user = new Users();
+        $user = new \controller\Users();
         $user->showLogInForm();
         break;
 
     case 4 : 
-        $user = new Users();
+        $user = new \controller\Users();
         $user->connexionControl();
         break;
 
     case 5 : 
-        $news = new News();
+        $news = new \controller\News();
         $news->showAllNewsFromCurrentUser();
         break;
 
@@ -59,7 +59,7 @@ switch($route){
             include('view/error404.phtml');
             die();
         } else {
-            $news = new News();
+            $news = new \controller\News();
             $news->showOneNewsFromCurrentUser(intval($_GET['id']));
         }
         break;
@@ -70,13 +70,13 @@ switch($route){
             include('view/error404.phtml');
             die();
         } else {
-            $news = new News();
+            $news = new \controller\News();
             $news->showAddNews();
         }
         break;
 
     case 8 :
-        $news = new News();
+        $news = new \controller\News();
         $news->addNews();
         break;
 
@@ -86,23 +86,23 @@ switch($route){
             include('view/error404.phtml');
             die();
         } else {
-            $news = new News();
+            $news = new \controller\News();
             $news->showUpdateNews(intval($_GET['id']));
             break;
         }
         
     case 10 :
-        $news = new News();
+        $news = new \controller\News();
         $news->updateNews();
         break;
 
     case 11 :
-        $news = new News();
+        $news = new \controller\News();
         $news->delete();
         break;
 
     default : 
-        $news = new News();
+        $news = new \controller\News();
         $news->showHome();
 }
 

@@ -1,5 +1,7 @@
 <?php
 
+namespace model;
+
 class NewsModel extends Model{
 
     protected $table = TABLE_NEWS;
@@ -10,7 +12,7 @@ class NewsModel extends Model{
                                     INNER JOIN users ON $this->table.id_users = users.id_users
                                     WHERE $this->table.id_users = ?");
         $query->execute([$id]);
-        return $query->fetchAll(PDO::FETCH_ASSOC);
+        return $query->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public function insert(array $data){
